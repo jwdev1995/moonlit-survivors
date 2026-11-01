@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="description" content="Moonlit Survivors — 뱀파이어 서바이벌 스타일의 브라우저 생존 액션. 15분을 버텨라!">
+<meta name="theme-color" content="#0d0f1c">
+<title>Moonlit Survivors</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0f1c'/%3E%3Cpath d='M20 4a12 12 0 1 0 8 20A10 10 0 0 1 20 4z' fill='%23ffe08a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="game-root">
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="xp-bar"><div id="xp-fill"></div><span id="xp-level">Lv.1</span></div>
+    <div id="top-row">
+      <div id="left-col">
+        <div id="hp-bar"><div id="hp-fill"></div><span id="hp-text"></span></div>
+        <div id="weapon-slots"></div>
+        <div id="passive-slots"></div>
+      </div>
+      <div id="timer">00:00</div>
+      <div id="right-col">
+        <div id="kills">☠ 0</div>
+        <div id="hud-buttons"><button id="btn-pause" title="일시정지 (P)">❚❚</button><button id="btn-mute" title="음소거 (M)">♪</button></div>
+      </div>
+    </div>
+    <div id="announce" class="hidden"></div>
+    <div id="boss-bar" class="hidden"><div id="boss-fill"></div><span id="boss-name"></span></div>
+  </div>
+
+  <!-- 타이틀 -->
+  <div id="screen-title" class="screen">
+    <div class="panel title-panel">
+      <h1><span class="moon">🌙</span> Moonlit Survivors</h1>
+      <p class="tagline">달빛 아래 괴물 무리를 뚫고 <b>15분</b>을 버텨라.</p>
+      <div id="char-list"></div>
+      <button id="btn-start" class="btn primary">게임 시작</button>
+      <p id="best-record" class="muted"></p>
+      <div class="controls">
+        <span><kbd>WASD</kbd>/<kbd>←↑↓→</kbd> 이동</span><span>터치 드래그 조이스틱</span>
+        <span><kbd>P</kbd> 일시정지</span><span><kbd>M</kbd> 음소거</span><span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> 선택</span>
+      </div>
+      <p class="muted small">무기는 자동으로 공격합니다. 이동으로 적을 피하고, 보석을 모아 레벨업하세요.</p>
+    </div>
+  </div>
+
+  <!-- 레벨업 -->
+  <div id="screen-levelup" class="screen hidden">
+    <div class="panel levelup-panel">
+      <h2>LEVEL UP!</h2>
+      <p class="muted">강화할 항목을 선택하세요</p>
+      <div id="cards"></div>
+    </div>
+  </div>
+
+  <!-- 일시정지 -->
+  <div id="screen-pause" class="screen hidden">
+    <div class="panel">
+      <h2>일시정지</h2>
+      <ul id="pause-build" class="build"></ul>
+      <div class="row">
+        <button id="btn-resume" class="btn primary">계속하기</button>
+        <button id="btn-pause-title" class="btn">타이틀로</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 결과 -->
+  <div id="screen-end" class="screen hidden">
+    <div class="panel">
+      <h2 id="end-title"></h2>
+      <div id="end-stats" class="stats"></div>
+      <div class="row">
+        <button id="btn-retry" class="btn primary">다시 도전</button>
+        <button id="btn-end-title" class="btn">타이틀로</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/input.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/weapons.js"></script>
+<script src="js/spawner.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
